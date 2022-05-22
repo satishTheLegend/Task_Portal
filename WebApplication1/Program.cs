@@ -1,22 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using Task_Portal.AppConfig;
-using Task_Portal.Database;
-
 var builder = WebApplication.CreateBuilder(args);
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-string Connection = string.Empty;
-if(AppConfig.isPersonal)
-{
-    Connection = "DefaultConnection";
-}
-else
-{
-    Connection = "OfficeDefaultConnection";
-}
-builder.Services.AddDbContext<ApplicationDBContext>(option => option.UseSqlServer(
-    builder.Configuration.GetConnectionString(Connection)));
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +22,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
