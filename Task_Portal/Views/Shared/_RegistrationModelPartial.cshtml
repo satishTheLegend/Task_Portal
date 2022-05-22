@@ -1,0 +1,62 @@
+﻿@model UserRegistrationViewModel
+@using (Html.BeginForm("Create", "Login", FormMethod.Post))
+{
+    <div id="addUser" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Customer Details Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" asp-for="FirstName" class="form-control form-control-lg" placeholder="First Name" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="LastName" class="form-control form-control-lg" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Address" class="form-control form-control-lg" placeholder="Address" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="City" class="form-control form-control-lg" placeholder="City" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="State" class="form-control form-control-lg" placeholder="State" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" asp-for="ZipCode" class="form-control form-control-lg" placeholder="ZipCode" />
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" asp-for="Phone" class="form-control form-control-lg" placeholder="Phone" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" asp-for="Email" class="form-control form-control-lg" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" asp-for="Password" class="form-control form-control-lg" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" asp-for="Confirm_Password" class="form-control form-control-lg" placeholder="Confirm Password" />
+                        <span asp-validation-for="Confirm_Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

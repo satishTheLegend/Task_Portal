@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model UserRegistrationViewModel
+<link rel="stylesheet" href="~/css/MoveCard.css" asp-append-version="true" />
+<div class="container vh-100">
+    <div class="row gx-lg-5 h-100 d-flex align-content-center text-white">
+        <div class="col-md-6 mb-4 mb-md-0 d-flex align-items-center">
+            <div class="animation-delay fade">
+                <h1 class="mb-4 opacity-90" style="color: hsl(218, 81%, 95%)">
+                    Welcome to Task List
+                </h1>
+
+                <h5 class="mb-4 opacity-80" style="color: hsl(218, 81%, 90%)">
+                    Explore Tasks Completed by satish
+                </h5>
+
+                <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    This is all about the learning so keep learniing
+                    and try to invent new things from the scratch.
+                </p>
+
+                <a class="btn btn-white btn-rounded btn-lg me-3 opacity-80"
+                   href="#"
+                   role="button"
+                   data-ripple-color="hsl(218, 41%, 45%)">Start</a>
+                <a class="btn btn-outline-white btn-rounded btn-lg opacity-80"
+                   href="#"
+                   role="button">Explore</a>
+            </div>
+        </div>
+
+        <div class="col-md-5 offset-md-1 mb-4 mb-md-0 position-relative ">
+            <div id="shape-1"
+                 class="
+                  position-absolute
+                  rounded-circle
+                  shadow-5-strong
+                  fade fade-delay-small
+                  "></div>
+            <div id="shape-2"
+                 class="position-absolute shadow-5-strong fade fade-delay-medium"></div>
+
+            <div id="card-custom" data-tilt data-tilt-max="10" data-tilt-speed="200" data-tilt-perspective="700" data-tilt-reset="true" data-tilt-scale="1.1"
+                 data-tilt-glare data-tilt-max-glare="0.5" class="card shadow-6 fade fade-delay-big rounded">
+                <newdiv class="">
+                    <div class="card-body p-5 opacity-90 ls-widest">
+                        <h2>
+                            <strong class="text-warning">Dev</strong> <span class="fw-light text-black">Info</span>
+                        </h2>
+                    </div>
+                    <div class="card-footer px-5 border-0 opacity-90 ls-widest fw-light">
+                        <img id="chip"
+                             class="mb-5 mt-5"
+                             src="~/images/code.png"
+                             alt="chip" />
+                        @if (TempData["UserData"] != null)
+                        {
+                            var _model = (UserRegistrationViewModel)TempData["UserData"];
+                            <h5 class="mb-5 text-warning">@_model.Phone</h5>
+                            <p class="mb-1 mt-5 text-warning">@_model.FirstName @_model.LastName</p>
+                            <p class="mb-1 mt-2 text-warning">@_model.Email</p>
+                        }
+                    </div>
+                </newdiv>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/js/Vanila_Tilt.js" />

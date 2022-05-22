@@ -1,0 +1,27 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+newdiv {
+    background-image: url('https://goodwordnews.com/wp-content/uploads/2022/02/RichApe.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+
+
