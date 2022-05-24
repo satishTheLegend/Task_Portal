@@ -17,7 +17,8 @@ body {
   margin-bottom: 60px;
 }
 newdiv {
-    background-image: url('https://goodwordnews.com/wp-content/uploads/2022/02/RichApe.png');
+    /*----https://goodwordnews.com/wp-content/uploads/2022/02/RichApe.png---*/
+    background-image: url('https://www.reuters.com/resizer/NRuMc4-qhlqkYuAlIBGuwHdOrTc=/505x631/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/43YAWLITTZJLZIQTCP2JSS4KSM.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;

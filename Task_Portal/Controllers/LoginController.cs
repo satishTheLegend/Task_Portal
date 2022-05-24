@@ -16,36 +16,38 @@ namespace Task_Portal.Controllers
             _db = db;
         }
         #endregion
+
+        #region Public Method
         public IActionResult Login()
         {
             IActionResult _view = View();
             var activeUser = _db.LoginUserData.FirstOrDefault(x => x.IsUserActive);
             if (activeUser == null)
                 return _view;
-            var LogOutDate = activeUser.LoginDate == null ? DateTime.Now.AddMinutes(AppConfig.AppConfig.Auto_Logout) : activeUser.LoginDate.AddMinutes(AppConfig.AppConfig.Auto_Logout);
+            var LogOutDate = activeUser.LoginDate.AddMinutes(AppConfig.AppConfig.Auto_Logout);
             if (activeUser != null && DateTime.Now < LogOutDate)
             {
                 TempData["success"] = null;
-                _view = RedirectToAction("Index", "Home", activeUser);
+                _view = RedirectToAction("Index", "Home");
             }
             return _view;
         }
         [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
-            IActionResult _view = View(login);
+            IActionResult _view = View();
             if (login != null && ModelState.IsValid)
             {
                 var loginInfo = _db.LoginUserData.Any(x => x.Email == login.Email && x.LoginPassword == login.LoginPassword);
                 var loginInfoData = _db.LoginUserData.FirstOrDefault(x => x.Email == login.Email && x.LoginPassword == login.LoginPassword);
-                if (loginInfo)
+                if (loginInfo && loginInfoData != null)
                 {
                     TempData["success"] = "Logging in";
                     loginInfoData.LoginDate = DateTime.Now;
                     loginInfoData.IsUserActive = true;
                     _db.Update(loginInfoData);
                     _db.SaveChanges();
-                    _view = RedirectToAction("Index", "Home", loginInfoData);
+                    _view = RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -69,10 +71,10 @@ namespace Task_Portal.Controllers
                         return _view;
                     }
 
-                    if(!string.IsNullOrEmpty(userRegistration.Phone))
+                    if (!string.IsNullOrEmpty(userRegistration.Phone))
                     {
                         var phoneExist = _db.UserRegistration.Any(x => x.Phone == userRegistration.Phone);
-                        if(phoneExist)
+                        if (phoneExist)
                         {
                             TempData["error"] = "This Phone number already exist please try with anoter phone";
                             return _view;
@@ -93,9 +95,11 @@ namespace Task_Portal.Controllers
                     var invalidValues = ModelState.Where(x => x.Value != null && x.Value.Errors?.Count > 0).ToList();
                     foreach (var item in invalidValues)
                     {
+                        if (item.Value == null)
+                            continue;
                         TempData["error"] = $"{item.Value.Errors[0].ErrorMessage}";
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -104,5 +108,7 @@ namespace Task_Portal.Controllers
             }
             return _view;
         }
+        #endregion
+
     }
 }
