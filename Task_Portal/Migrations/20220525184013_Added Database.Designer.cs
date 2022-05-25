@@ -12,8 +12,8 @@ using Task_Portal.Database;
 namespace Task_Portal.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220522095654_CreatedDBOnDellLaptop")]
-    partial class CreatedDBOnDellLaptop
+    [Migration("20220525184013_Added Database")]
+    partial class AddedDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,6 +95,10 @@ namespace Task_Portal.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProfilePicturePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
