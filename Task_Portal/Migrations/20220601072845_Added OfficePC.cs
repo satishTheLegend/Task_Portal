@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Task_Portal.Migrations
 {
-    public partial class AddedDatabase : Migration
+    public partial class AddedOfficePC : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
