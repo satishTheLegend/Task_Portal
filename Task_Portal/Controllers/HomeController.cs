@@ -19,6 +19,10 @@ namespace Task_Portal.Controllers
         {
             var activeUser = _db.LoginUserData.FirstOrDefault(x => x.IsUserActive);
             var UserData = _db.UserRegistration.FirstOrDefault(x => x.Email == activeUser.Email);
+            if(UserData != null && string.IsNullOrEmpty(UserData.ProfilePicturePath))
+            {
+                UserData.ProfilePicturePath = @"D:\PersonalServerForAsp\Avatar\profile.png";
+            }
             TempData["UserData"] = UserData;
             return View();
         }

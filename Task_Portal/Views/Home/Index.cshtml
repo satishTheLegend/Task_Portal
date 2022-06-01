@@ -57,9 +57,12 @@
                         @if (TempData["UserData"] != null)
                         {
                             var _model = (UserRegistrationViewModel)TempData["UserData"];
-                            <h5 class="mb-5 text-warning">@_model.Phone</h5>
-                            <p class="mb-1 mt-5 text-warning">@_model.FirstName @_model.LastName</p>
-                            <p class="mb-1 mt-2 text-warning">@_model.Email</p>
+                            if (_model != null)
+                            {
+                                <h5 class="mb-5 text-warning">@_model.Phone</h5>
+                                <p class="mb-1 mt-5 text-warning">@_model.FirstName @_model.LastName</p>
+                                <p class="mb-1 mt-2 text-warning">@_model.Email</p>
+                            }
                         }
                     </div>
                 </newdiv>

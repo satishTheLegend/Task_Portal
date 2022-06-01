@@ -8,8 +8,9 @@
                 <span class="sr-only">Task Portal</span>
             </button>
         </div>
-        <div class="p-4">
-            <h1><a class="logo"> <i class="fa fa-user-circle" aria-hidden="true"> @_model.FirstName</i><h2>  @_model.Phone</h2></a></h1>
+        <div class="p-4 ml-3">
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(File.ReadAllBytes(_model.ProfilePicturePath))" class="rounded-circle" style="width: 180px;" alt="Avatar"/>
+            <h1>@_model.FirstName @_model.LastName</h1>
             <ul class="list-unstyled components mb-5">
                 <li class="active">
                     <a asp-area="" asp-controller="Home" asp-action="Index"><span class="fa fa-home mr-3"></span> Dashboard</a>

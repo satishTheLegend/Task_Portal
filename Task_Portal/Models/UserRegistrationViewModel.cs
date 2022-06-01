@@ -32,6 +32,7 @@ namespace Task_Portal.Models
         [Required]
         [Display(Name = "Confirm Password")]
         public string Confirm_Password { get; set; }
+        public string ProfilePicturePath { get; set; } = @"D:\PersonalServerForAsp\Avatar\profile.png";
 
     }
 }
