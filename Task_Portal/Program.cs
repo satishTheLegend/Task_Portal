@@ -1,3 +1,4 @@
+using DeviceId;
 using Microsoft.EntityFrameworkCore;
 using Task_Portal.AppConfig;
 using Task_Portal.Database;
@@ -6,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 string Connection = string.Empty;
-if(AppConfig.isPersonal)
+string deviceId = new DeviceIdBuilder().AddMachineName().ToString();
+if (AppConfig.PersonalPCUniqueId == deviceId)
 {
     Connection = "DefaultConnection";
 }
