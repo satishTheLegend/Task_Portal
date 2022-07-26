@@ -12,5 +12,7 @@ namespace Task_Portal.Database
 
         public DbSet<UserRegistrationViewModel> UserRegistration { get; set; }
         public DbSet<LoginViewModel> LoginUserData { get; set; }
+        public DbSet<CustomerRecord> CustomerRecords { get; set; }
+        public DbSet<TransactionRecord> TransactionRecords { get; set; }
     }
 }

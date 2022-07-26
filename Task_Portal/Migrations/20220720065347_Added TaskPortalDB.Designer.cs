@@ -12,8 +12,8 @@ using Task_Portal.Database;
 namespace Task_Portal.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220525184013_Added Database")]
-    partial class AddedDatabase
+    [Migration("20220720065347_Added TaskPortalDB")]
+    partial class AddedTaskPortalDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -27,9 +27,33 @@ namespace Task_Portal.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Dashboard()
         {
-            return View();
+            List<TransactionRecordViewModel> transactionRecordsList = new List<TransactionRecordViewModel>();
+            var customerRecords = _db.CustomerRecords.ToList();
+            foreach (var item in customerRecords)
+            {
+                TransactionRecordViewModel recordViewModel = new TransactionRecordViewModel();
+                recordViewModel.Id = item.Id;
+                recordViewModel.CustName = item.CustName;
+                recordViewModel.CustCode = item.CustCode;
+                recordViewModel.Balance = item.Balance;
+                recordViewModel.TransactionRecords = _db.TransactionRecords.Where(x=> x.CustCode == item.CustCode).ToList();
+                if(recordViewModel.TransactionRecords?.Count > 0)
+                {
+                    var debitAmt = recordViewModel.TransactionRecords.Sum(x => x.DebitAmt);
+                    var creditAmt = recordViewModel.TransactionRecords.Sum(x => x.CreditAmt);
+
+                    if(recordViewModel.Balance > 0)
+                    {
+                        var creditbalance = creditAmt - debitAmt;
+                        recordViewModel.TotalAmount = (recordViewModel.Balance + creditbalance).ToString();
+                        recordViewModel.IsTotal = true;
+                    }
+                }
+                transactionRecordsList.Add(recordViewModel);
+            }
+            return View(transactionRecordsList);
         }
 
         public IActionResult Logout()

@@ -23,6 +23,19 @@ newdiv {
     background-size: cover;
     height: 100%;
 }
+tbody {
+    display: inline-block;
+    height: 600px;
+    overflow: auto;
+}
 
+    thead, tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+thead {
+}
 
 
